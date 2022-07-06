@@ -1,0 +1,28 @@
+{
+  "name": "docker-workflow-nodejs-express",
+  "version": "1.0.0",
+  "description": "This full docker production work flow for a NodeJS - Express app with a Mongos and Redis Database",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/onnamani/Docker-Workflow-NodeJS-Express.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/onnamani/Docker-Workflow-NodeJS-Express/issues"
+  },
+  "homepage": "https://github.com/onnamani/Docker-Workflow-NodeJS-Express#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "npm": "^8.13.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  }
+}
