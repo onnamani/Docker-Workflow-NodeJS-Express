@@ -6,3 +6,6 @@ services:
       - ./.env
     ports:
       - "3000:${PORT}"
+    volumes:
+      - ./:/app:ro
+      - /app/node_modules
