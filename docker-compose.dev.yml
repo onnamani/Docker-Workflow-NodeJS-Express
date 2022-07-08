@@ -12,4 +12,10 @@ services:
       - NODE_ENV=development
       - MONGO_USER=${DB_USERNAME}
       - MONGO_PASSWORD=${DB_PASSWORD}
+      - SESSION_SECRET=secret
     command: npm run dev
+  
+  mongo:
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${DB_USERNAME}
+      - MONGO_INITDB_ROOT_PASSWORD=4{DB_PASSWORD}
