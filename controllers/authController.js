@@ -2,7 +2,7 @@ const User = require("../models/userModel");
 const bcrypt = require("bcryptjs");
 
 exports.signUp = async (req, res) => {
-    const {username, password} = req.body;
+    const { username, password } = req.body;
 
     try {
         const userExists = await User.findOne({ username }) ? true : false;
@@ -21,7 +21,7 @@ exports.signUp = async (req, res) => {
             username,
             password: hashPassword
         });
-        
+
         req.session.user = newUser;
 
         res.status(201).json({
