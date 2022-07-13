@@ -3,7 +3,7 @@ const { MONGO_USER, MONGO_PASSWORD, MONGO_IP, MONGO_PORT } = require("../config/
 
 const mongoURL = `mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_IP}:${MONGO_PORT}/?authSource=admin`;
 
-function connectToMongo(app, port) {
+function connectToDB(app, port) {
     mongoose.connect(mongoURL, {
         useNewUrlParser: true,
         useUnifiedTopology: true
@@ -13,5 +13,5 @@ function connectToMongo(app, port) {
                 .catch((e) => console.log(e));
 }
 
-module.exports = { connectToMongo }
+module.exports = { connectToDB }
 

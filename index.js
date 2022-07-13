@@ -1,5 +1,5 @@
 const express = require("express");
-const { connectToMongo } = require("./db/mongoDB");
+const { connectToDB } = require("./db/connectToDB");
 const postRouter = require("./routes/postRoutes");
 const userRouter = require("./routes/userRoutes");
 const { REDIS_URL, REDIS_PORT, SESSION_SECRET } = require("./config/config");
@@ -23,7 +23,7 @@ redisClient.connect().then((result) => {
 const app = express();
 
 const port = process.env.PORT || 3000;
-connectToMongo(app, port);
+connectToDB(app, port);
 
 
 app.use(session({
