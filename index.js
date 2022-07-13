@@ -5,38 +5,36 @@ const userRouter = require("./routes/userRoutes");
 const { REDIS_URL, REDIS_PORT, SESSION_SECRET } = require("./config/config");
 const session = require("express-session");
 const { createClient } = require("redis");
+
 let RedisStore = require("connect-redis")(session);
 
-let redisStore;
-
 let redisClient = createClient({
+    legacyMode: true,
     socket: {
         host: REDIS_URL,
         port: REDIS_PORT
     }
+    
 });
 
-redisClient.connect().then((result) => {
-    redisStore = new RedisStore({ client: redisClient })
-})
+redisClient.connect().catch(console.error);
 
 const app = express();
 
 const port = process.env.PORT || 3000;
 connectToDB(app, port);
 
-
 app.use(session({
-    store: redisStore,
+    store: new RedisStore({ client: redisClient }),
     secret: SESSION_SECRET,
     cookie: {
         secure: false,
         resave: false,
         saveUninitialized: false,
         httpOnly: true,
-        maxAge: 30000
+        maxAge: 300000
     }
-}))
+}));
 
 app.use(express.json());
 
