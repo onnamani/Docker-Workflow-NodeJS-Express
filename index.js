@@ -24,6 +24,8 @@ const app = express();
 const port = process.env.PORT || 3000;
 connectToDB(app, port);
 
+app.enable("trust proxy");
+
 app.use(session({
     store: new RedisStore({ client: redisClient }),
     secret: SESSION_SECRET,
