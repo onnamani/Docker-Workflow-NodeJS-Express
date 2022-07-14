@@ -5,6 +5,7 @@ const userRouter = require("./routes/userRoutes");
 const { REDIS_URL, REDIS_PORT, SESSION_SECRET } = require("./config/config");
 const session = require("express-session");
 const { createClient } = require("redis");
+const cors = require("cors");
 
 let RedisStore = require("connect-redis")(session);
 
@@ -25,6 +26,8 @@ const port = process.env.PORT || 3000;
 connectToDB(app, port);
 
 app.enable("trust proxy");
+
+app.use(cors({}));
 
 app.use(session({
     store: new RedisStore({ client: redisClient }),
