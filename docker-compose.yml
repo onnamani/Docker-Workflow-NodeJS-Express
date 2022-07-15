@@ -9,8 +9,6 @@ services:
 
   node-app:
     build: .
-    env_file:
-      - ./.env
     depends_on:
       - mongo
       - redis
