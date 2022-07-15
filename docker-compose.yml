@@ -9,6 +9,7 @@ services:
 
   node-app:
     build: .
+    image: 19991057823/node-app-wkflow
     depends_on:
       - mongo
       - redis
